@@ -1,6 +1,5 @@
 #!/bin/python3
-import boto3
-import json
+import boto3, json
 
 
 def lambda_handler(event, context):
@@ -23,7 +22,7 @@ def lambda_handler(event, context):
         print("Hostname of the instances: {}".format(Running_Instances))
 
         count=len(Running_Instances)
-        message = ("Hi Team,\n\nPlease find the below list of servers have been STOPPED as per daily power-0ff schedule.\n\nHostname = {a}\nNumber of servers = {b}\n\nRegards,\nIO Team".format(a=Running_Instances,b=count))
+        message = ("Hi Team,\n\nPlease find the below list of servers have been STOPPED as per daily power-0ff schedule.\n\nHostname = {a}\nNumber of servers = {b}\n\nRegards,\nTeam".format(a=Running_Instances,b=count))
         sub =("EC2 Instance Daily Power-OFF Schedule")
         sns_arn=("<???>")
 
@@ -33,7 +32,7 @@ def lambda_handler(event, context):
     def publish_sns_2(instances,RunningInstances):
         client = boto3.client(service_name='sns', region_name='eu-west-1')
 
-        message = ("Hi Team,\n\nThere are no servers to STOP in the env.\n\nPlease login to the AWS console and check it.\n\nRegards,\nIO Team")
+        message = ("Hi Team,\n\nThere are no servers to STOP in the env.\n\nPlease login to the AWS console and check it.\n\nRegards,\nTeam")
         sub =("EC2 Instance Daily Power-OFF Schedule")
         sns_arn=("???")
 
